@@ -6,14 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rskrobin.moviesapp.model.NetworkMovieRepository
 import com.rskrobin.moviesapp.model.entity.MoviesList
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MoviesListViewModel : ViewModel() {
-
-    private val network = NetworkMovieRepository()
+@HiltViewModel
+class MoviesListViewModel @Inject constructor(
+    private val moviesRepository: NetworkMovieRepository
+) : ViewModel() {
 
     private val privateMoviesList = MutableLiveData<MoviesList>().apply {
-        viewModelScope.launch { value = network.getListMovies() }
+        viewModelScope.launch { value = moviesRepository.getListMovies() }
     }
     val moviesList: LiveData<MoviesList> = privateMoviesList
 }

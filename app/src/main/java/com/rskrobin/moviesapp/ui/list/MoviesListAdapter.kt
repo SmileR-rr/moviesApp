@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rskrobin.moviesapp.R
 import com.rskrobin.moviesapp.databinding.ItemFilmBinding
+import com.rskrobin.moviesapp.model.entity.Movie
 
 class MoviesListAdapter() : RecyclerView.Adapter<MoviesListAdapter.MovieViewHolder>() {
 
-    var listMovies = mutableListOf<String>()
+    var moviesList = listOf<Movie>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -21,10 +22,10 @@ class MoviesListAdapter() : RecyclerView.Adapter<MoviesListAdapter.MovieViewHold
         )
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) = holder.run {
-        binding.name.text = listMovies[position]
+        binding.name.text = moviesList[position].title
     }
 
-    override fun getItemCount(): Int = listMovies.size
+    override fun getItemCount(): Int = moviesList.size
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemFilmBinding.bind(itemView)
