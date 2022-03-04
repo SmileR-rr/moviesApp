@@ -99,7 +99,7 @@
             android:id="@+id/age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/on_primary"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/rectangle_movie"
             app:layout_constraintEnd_toEndOf="@id/rectangle_movie"
