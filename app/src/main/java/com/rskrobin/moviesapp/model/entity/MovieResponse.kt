@@ -45,5 +45,5 @@ data class MovieResponse(
     val voteAverage: Double,
 
     @SerialName("vote_count")
-    val vote_count: Int
+    val voteCount: Int
 )

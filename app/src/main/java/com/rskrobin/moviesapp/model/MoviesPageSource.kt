@@ -50,5 +50,5 @@ private fun MovieResponse.toMovie() = Movie(
     title = title,
     video = video,
     voteAverage = voteAverage,
-    vote_count = vote_count
+    voteCount = voteCount
 )

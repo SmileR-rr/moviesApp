@@ -1,8 +1,5 @@
 package com.rskrobin.moviesapp.model.entity
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-
 data class Movie(
     val adult: Boolean,
     val backdropPath: String,
@@ -17,5 +14,5 @@ data class Movie(
     val title: String,
     val video: Boolean,
     val voteAverage: Double,
-    val vote_count: Int
+    val voteCount: Int
 )

@@ -8,6 +8,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.rskrobin.moviesapp.BuildConfig
 import com.rskrobin.moviesapp.R
 import com.rskrobin.moviesapp.databinding.ItemFilmBinding
 import com.rskrobin.moviesapp.model.entity.Movie
@@ -20,12 +21,13 @@ class MoviesPagingAdapter(context: Context) :
             LayoutInflater.from(parent.context).inflate(R.layout.item_film, parent, false)
         )
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) = holder.run {
-        val ttt = getItem(position)?.backdropPath
-        val tttt = getItem(position)?.posterPath
-        val ttttt = getItem(position)?.overview
-        binding.logoMovie.load(getItem(position)?.backdropPath)
-        binding.name.text = getItem(position)?.title
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int): Unit = holder.run {
+        val movie = getItem(position)
+        binding.apply {
+            logoMovie.load(BuildConfig.BASE_IMAGE_URL + movie?.posterPath)
+            name.text = movie?.title
+            ratingBar.rating = (movie?.voteAverage?.div(2))?.toFloat() ?: 0f
+        }
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
